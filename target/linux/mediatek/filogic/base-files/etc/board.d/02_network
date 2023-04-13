@@ -29,6 +29,7 @@ mediatek_setup_interfaces()
 	cudy,wr3000-v1)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" "wan"
 		;;
+	glinet,gl-mt2500|\
 	glinet,gl-mt3000)
 		ucidef_set_interfaces_lan_wan eth1 eth0
 		;;
@@ -104,6 +105,10 @@ mediatek_setup_macs()
 			label_mac=$wan_mac
 		;;
 		esac
+		;;
+	glinet,gl-mt2500)
+		wan_mac=$(get_mac_binary /dev/mmcblk0boot1 0x0a)
+		lan_mac=$(macaddr_add "$wan_mac" 1)
 		;;
 	glinet,gl-mt6000)
 		label_mac=$(mmc_get_mac_binary factory 0x0a)

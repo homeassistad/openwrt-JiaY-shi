@@ -290,6 +290,17 @@ define Device/glinet_gl-mt3000
 endef
 TARGET_DEVICES += glinet_gl-mt3000
 
+define Device/glinet_gl-mt2500
+  DEVICE_VENDOR := GL.iNet
+  DEVICE_MODEL := GL-MT2500
+  DEVICE_DTS := mt7981b-glinet-gl-mt2500
+  DEVICE_DTS_DIR := ../dts
+  SUPPORTED_DEVICES := glinet,gl-mt2500
+  DEVICE_PACKAGES := mkf2fs kmod-mmc kmod-fs-f2fs gdisk
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += glinet_gl-mt2500
+
 define Device/glinet_gl-mt6000
   DEVICE_VENDOR := GL.iNet
   DEVICE_MODEL := GL-MT6000
